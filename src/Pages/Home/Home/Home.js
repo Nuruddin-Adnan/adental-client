@@ -1,5 +1,6 @@
 import React from 'react';
 import useTiele from '../../../hooks/useTitle';
+import About from '../About/About';
 import Banner from '../Banner/Banner';
 import Services from '../Services/Services';
 
@@ -9,6 +10,7 @@ const Home = () => {
         <main>
             <Banner></Banner>
             <Services></Services>
+            <About></About>
         </main>
     );
 };

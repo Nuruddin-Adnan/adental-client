@@ -9,7 +9,7 @@ const ServiceCard = () => {
                 <div className="card-body text-center">
                     <img src="https://www.webfulcreations.com/envato/dental_clinic/assets/images/help/services/service_4.jpg" alt="service" className='w-100' />
                     <h4 className='fw-bold mt-3'>Advanced Technology</h4>
-                    <p className='text-muted'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, velit! Quidem enim inventore illo porro eligendi facere at libero fugiat unde rerum, autem, itaque possimus quae omnis pariatur, dicta ipsa?</p>
+                    <p className='text-muted lead'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, velit! Quidem enim inventore illo porro eligendi facere at libero fugiat unde rerum, autem, itaque possimus quae omnis pariatur, dicta ipsa?</p>
                     <h5 className='text-info fw-bold'>Price: $60</h5>
                     <div className="ratings text-warning">
                         <FaStar></FaStar>
