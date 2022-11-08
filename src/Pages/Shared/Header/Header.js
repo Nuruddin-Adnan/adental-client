@@ -8,7 +8,7 @@ const Header = () => {
     console.log(user);
 
     const loginMenu = <>
-        <button className="btn btn-lg btn-info text-white" type="button">Login</button>
+        <Link to='/login' className="btn btn-lg btn-info text-white" type="button">Login</Link>
 
         <div className="dropdown">
             <button className="btn" data-bs-toggle="dropdown" aria-expanded="false">
