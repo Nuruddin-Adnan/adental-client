@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { googleSignIn, logIn } = useContext(AuthContext);
+    const { googleSignIn, logIn, notify } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -15,7 +15,26 @@ const Login = () => {
         setError('')
         googleSignIn()
             .then(() => {
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
+                notify('Login Successfull')
+            })
+            .catch(error => setError(error.message))
+    }
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setError('');
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+            .then(() => {
+                form.reset();
+                notify('Login Successfull')
+                navigate(from, { replace: true });
             })
             .catch(error => setError(error.message))
     }
@@ -30,14 +49,20 @@ const Login = () => {
                                 <h3 className='text-center fw-bold fs-1'>Login</h3>
                             </div>
                             <div className="card-body">
-                                <form>
+                                {
+                                    error &&
+                                    <div className="alert alert-danger">
+                                        {error}
+                                    </div>
+                                }
+                                <form onSubmit={handleSubmit}>
                                     <div className="mb-3">
-                                        <label>Name</label>
-                                        <input type="text" className='form-control form-control-lg' placeholder='Enter your name' />
+                                        <label>Email</label>
+                                        <input type="email" name="email" className='form-control form-control-lg' placeholder='Enter your email' />
                                     </div>
                                     <div className="mb-3">
                                         <label>Password</label>
-                                        <input type="password" className='form-control form-control-lg' placeholder='Enter your Password' />
+                                        <input type="password" name="password" className='form-control form-control-lg' placeholder='Enter your Password' />
                                     </div>
                                     <button className='btn btn-lg btn-info w-100 text-white'>Login</button>
                                 </form>
@@ -47,6 +72,7 @@ const Login = () => {
                                 <button onClick={handleGoogleSignIn} className='btn btn-lg btn-secondary w-100 d-flex align-items-center justify-content-center'>
                                     <span className='bg-white border rounded-circle d-flex align-items-center justify-content-center me-2' style={{ width: '40px', height: '40px' }}><FcGoogle className='fs-4'></FcGoogle></span> Sign In With Google
                                 </button>
+                                <p className='text-center mt-4'>Don't have an account? <Link className='fw-bold' to='/registration'><u>Register Now</u></Link></p>
                             </div>
                         </div>
                     </div>

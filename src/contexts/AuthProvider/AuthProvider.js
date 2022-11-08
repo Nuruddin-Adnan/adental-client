@@ -1,12 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState({ displayName: 'Adnan' });
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const googleProvider = new GoogleAuthProvider();
@@ -49,16 +51,16 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     //  toast notification message
-    // const notify = (message) => toast.success(message, {
-    //     position: "top-center",
-    //     autoClose: 2000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "colored",
-    // });
+    const notify = (message) => toast.success(message, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
 
 
     const authInfo = {
@@ -69,12 +71,13 @@ const AuthProvider = ({ children }) => {
         logIn,
         logOut,
         updateUserProfile,
-        // notify
+        notify
     };
 
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
+            <ToastContainer />
         </AuthContext.Provider>
     );
 };

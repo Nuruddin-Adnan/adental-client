@@ -5,7 +5,6 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
 
     const loginMenu = <>
         <Link to='/login' className="btn btn-lg btn-info text-white" type="button">Login</Link>
