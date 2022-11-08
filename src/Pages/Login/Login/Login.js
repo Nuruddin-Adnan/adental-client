@@ -46,7 +46,7 @@ const Login = () => {
                     <div className="col-lg-6 mx-auto">
                         <div className="card">
                             <div className="card-header">
-                                <h3 className='text-center fw-bold fs-1'>Login</h3>
+                                <h3 className='text-center fw-bold fs-1'>Login  now!</h3>
                             </div>
                             <div className="card-body">
                                 {
