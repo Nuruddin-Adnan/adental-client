@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import './Header.css';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const Header = () => {
             user?.uid ?
                 <div className="dropdown">
                     <button className="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="avatar" className='rounded-circle' width='48px' height='48px' />
+                        <img src={user?.photoURL} alt="avatar" className='rounded-circle border d-block' style={{ width: '48px', height: '48px', objectFit: 'cover' }} />
                     </button>
 
                     <ul className="dropdown-menu dropdown-menu-end">
@@ -49,10 +50,16 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink to='/home' className='nav-link'>Home</NavLink>
+                                <NavLink to='/home' className='nav-link px-lg-3'>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/blog' className='nav-link'>Blog</NavLink>
+                                <NavLink to='/services' className='nav-link px-lg-3'>Services</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/blog' className='nav-link px-lg-3'>Blog</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/review' className='nav-link px-lg-3'>My Review</NavLink>
                             </li>
                         </ul>
                     </div>
