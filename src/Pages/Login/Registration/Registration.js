@@ -2,8 +2,10 @@ import { isEmpty } from '@firebase/util';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTiele from '../../../hooks/useTitle';
 
 const Registration = () => {
+    useTiele('Registration')
     const [error, setError] = useState('');
     const { createUser, updateUserProfile, notify } = useContext(AuthContext);
     const navigate = useNavigate();
