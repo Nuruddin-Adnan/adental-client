@@ -17,7 +17,7 @@ const Partner = () => {
                 <p className='mb-4 col-md-6 mx-auto lead'>
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
                 </p>
-                <div className="row g-5">
+                <div className="row g-lg-5">
                     <div className="col">
                         <div className="partner-box">
                             <img src={partner1} alt="partner" className='img-fluid' />

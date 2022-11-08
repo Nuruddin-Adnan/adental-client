@@ -69,11 +69,11 @@ const Registration = () => {
 
 
     return (
-        <section>
+        <section style={{ backgroundColor: '#F2F2F2' }}>
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-6 mx-auto">
-                        <div className="card">
+                        <div className="card rounded-lg overflow-hidden">
                             <div className="card-header">
                                 <h3 className='text-center fw-bold fs-1'>Register  now!</h3>
                             </div>
