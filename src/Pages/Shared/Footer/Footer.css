@@ -1,0 +1,33 @@
+.footer .footer-top .social-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    display: block;
+    color: #444;
+    margin: 5px;
+    transition: all 0.2s linear;
+}
+
+.footer .footer-top .social-icon:hover {
+    background-color: #3FB6E0;
+    color: #fff;
+}
+
+.footer .footer-bottom {
+    background-color: #16181a;
+}
+
+.footer .footer-bottom ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+.footer .footer-bottom .nav-link {
+    margin: 3px 7px;
+}
+
+.footer .footer-bottom .nav-link:hover {
+    text-decoration: underline;
+}
