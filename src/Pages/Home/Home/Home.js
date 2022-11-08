@@ -1,10 +1,13 @@
 import React from 'react';
+import useTiele from '../../../hooks/useTitle';
+import Banner from '../Banner/Banner';
 
 const Home = () => {
+    useTiele('Home')
     return (
-        <div>
-            Home page
-        </div>
+        <main>
+            <Banner></Banner>
+        </main>
     );
 };
 
