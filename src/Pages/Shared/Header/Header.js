@@ -4,22 +4,34 @@ import logo from '../../../assets/images/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error.message))
+    }
 
     const loginMenu = <>
-        <Link to='/login' className="btn btn-lg btn-info text-white" type="button">Login</Link>
 
-        <div className="dropdown">
-            <button className="btn" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="avatar" className='rounded-circle' width='48px' height='48px' />
-            </button>
+        {
+            user?.uid ?
+                <div className="dropdown">
+                    <button className="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="avatar" className='rounded-circle' width='48px' height='48px' />
+                    </button>
 
-            <ul className="dropdown-menu dropdown-menu-end">
-                <li><Link className="dropdown-item">Another action</Link></li>
-                <li><Link className="dropdown-item">Something else here</Link></li>
-                <li><Link to='/logout' className="dropdown-item">Logout</Link></li>
-            </ul>
-        </div>
+                    <ul className="dropdown-menu dropdown-menu-end">
+                        <li><Link to='/profile' className="dropdown-item">Profile</Link></li>
+                        <li><Link to='/review' className="dropdown-item">My Review</Link></li>
+                        <li><button onClick={handleLogOut} className="dropdown-item">Logout</button></li>
+                    </ul>
+                </div>
+                :
+                <Link to='/login' className="btn btn-lg btn-info text-white" type="button">Login</Link>
+        }
+
+
     </>
     return (
         <header>
