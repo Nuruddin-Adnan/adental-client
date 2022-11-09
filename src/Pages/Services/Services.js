@@ -1,11 +1,11 @@
 import React from 'react';
-import useTiele from '../../hooks/useTitle';
+import useTitle from '../../hooks/useTitle';
 import Partner from '../Shared/Partner/Partner';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 import TitleBanner from '../Shared/TitleBanner/TitleBanner';
 
 const Services = () => {
-    useTiele('Service')
+    useTitle('Service')
     return (
         <>
 

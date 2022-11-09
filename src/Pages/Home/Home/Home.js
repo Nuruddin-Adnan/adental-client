@@ -1,12 +1,12 @@
 import React from 'react';
-import useTiele from '../../../hooks/useTitle';
+import useTitle from '../../../hooks/useTitle';
 import Partner from '../../Shared/Partner/Partner';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
 import Services from '../Services/Services';
 
 const Home = () => {
-    useTiele('Home')
+    useTitle('Home')
     return (
         <main>
             <Banner></Banner>

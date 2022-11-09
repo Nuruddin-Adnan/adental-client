@@ -1,7 +1,9 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 import TitleBanner from '../Shared/TitleBanner/TitleBanner';
 
 const Blog = () => {
+    useTitle('Blog')
     return (
         <>
             <TitleBanner title={'Blog'}></TitleBanner>
