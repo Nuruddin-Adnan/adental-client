@@ -24,7 +24,7 @@ const Header = () => {
 
                     <ul className="dropdown-menu dropdown-menu-end">
                         <li><Link to='/profile' className="dropdown-item">Profile</Link></li>
-                        <li><Link to='/review' className="dropdown-item">My Review</Link></li>
+                        <li><Link to={`/review/${user.email}`} className="dropdown-item">My Review</Link></li>
                         <li><button onClick={handleLogOut} className="dropdown-item">Logout</button></li>
                     </ul>
                 </div>
@@ -58,9 +58,16 @@ const Header = () => {
                             <li className="nav-item">
                                 <NavLink to='/blog' className='nav-link px-lg-3'>Blog</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to='/review' className='nav-link px-lg-3'>My Review</NavLink>
-                            </li>
+                            {
+                                user?.uid && <>
+                                    <li className="nav-item">
+                                        <NavLink to={`/review/${user.email}`} className='nav-link px-lg-3'>My Review</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to='/addService' className='nav-link px-lg-3'>Add Service</NavLink>
+                                    </li>
+                                </>
+                            }
                         </ul>
                     </div>
                     <div className="d-lg-inline d-none">

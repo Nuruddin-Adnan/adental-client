@@ -37,8 +37,8 @@ const Registration = () => {
             setError('Please provide a valid photo URL');
             return;
         }
-        else if ((photoURL.trim()).length > 150) {
-            setError('Photo URL is too long. It should be max 100 characters');
+        else if ((photoURL.trim()).length > 200) {
+            setError('Photo URL is too long. It should be max 200 characters');
             return;
         }
         else if (isEmpty(email.trim())) {
@@ -86,19 +86,19 @@ const Registration = () => {
                                 }
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-3">
-                                        <label class="form-label">Full Name</label>
+                                        <label className="form-label">Full Name</label>
                                         <input type="text" name="name" className='form-control form-control-lg' placeholder='Enter your name' />
                                     </div>
                                     <div className="mb-3">
-                                        <label class="form-label">Photo URL</label>
+                                        <label className="form-label">Photo URL</label>
                                         <input type="text" name="photoURL" className='form-control form-control-lg' placeholder='Your Photo URL' />
                                     </div>
                                     <div className="mb-3">
-                                        <label class="form-label">Email</label>
+                                        <label className="form-label">Email</label>
                                         <input type="email" name="email" className='form-control form-control-lg' placeholder='Enter your email' />
                                     </div>
                                     <div className="mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label className="form-label">Password</label>
                                         <input type="password" name="password" className='form-control form-control-lg' placeholder='Enter your Password' />
                                     </div>
                                     <button className='btn btn-lg btn-info w-100 text-white'>Register</button>

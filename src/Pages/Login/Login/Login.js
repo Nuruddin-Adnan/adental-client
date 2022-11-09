@@ -59,11 +59,11 @@ const Login = () => {
                                 }
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-3">
-                                        <label class="form-label">Email</label>
+                                        <label className="form-label">Email</label>
                                         <input type="email" name="email" className='form-control form-control-lg' placeholder='Enter your email' />
                                     </div>
                                     <div className="mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label className="form-label">Password</label>
                                         <input type="password" name="password" className='form-control form-control-lg' placeholder='Enter your Password' />
                                     </div>
                                     <button className='btn btn-lg btn-info w-100 text-white'>Login</button>

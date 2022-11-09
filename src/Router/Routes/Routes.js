@@ -4,8 +4,11 @@ import Blog from "../../Pages/Blog/Blog"
 import Home from "../../Pages/Home/Home/Home"
 import Login from "../../Pages/Login/Login/Login"
 import Registration from "../../Pages/Login/Registration/Registration"
+import MyReview from "../../Pages/MyReview/MyReview/MyReview"
 import NotFound from "../../Pages/NotFound/NotFound"
+import ServiceDetails from "../../Pages/ServiceDetails/ServiceDetails/ServiceDetails"
 import Services from "../../Pages/Services/Services"
+import PrivateRoute from "../PrivateRoute/PrivateRoute"
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +25,23 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Services></Services>
+                element: <Services></Services>,
+                loader: () => fetch('http://localhost:5000/services')
+            },
+            {
+                path: '/services/:id',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+            },
+            {
+                path: '/review/service/:id',
+                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+            },
+            {
+                path: '/review/:email',
+                element: <PrivateRoute><MyReview></MyReview></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/reviews?email=${params.email}`)
             },
             {
                 path: '/blog',

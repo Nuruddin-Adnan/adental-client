@@ -18,12 +18,10 @@ const ServiceCard = ({ service }) => {
                     </p>
                     <h5 className='text-info fw-bold'>Price: ${price}</h5>
                     <div className="ratings">
-                        {
-                            useRating(ratings)
-                        }
+                        {useRating(ratings)}
                     </div>
                 </div>
-                <Link className='btn btn-info text-white w-100 fs-5 py-3 rounded-0'>SERVICE DETAILS</Link>
+                <Link to={`/services/${_id}`} className='btn btn-info text-white w-100 fs-5 py-3 rounded-0'>VIEW DETAILS</Link>
             </div>
         </div>
     );

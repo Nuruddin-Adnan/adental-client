@@ -12,7 +12,7 @@ const Partner = () => {
         <section className='our-partner py-5'>
             <div className="container text-center py-5">
                 <img src={favicon} alt="dental teeth" className='img-fuid' />
-                <h2 className='fw-bold my-2'>OUR <span className='text-info'>PARTNERS</span></h2>
+                <h2 className='fw-bold my-2'>MY <span className='text-info'>PARTNERS</span></h2>
                 <h5 className=''>Out Partners believe us and life starts with a beautiful smile.</h5>
                 <p className='mb-4 col-md-6 mx-auto lead'>
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
