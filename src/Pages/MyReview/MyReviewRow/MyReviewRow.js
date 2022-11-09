@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const MyReviewRow = ({ reviewData }) => {
+const MyReviewRow = ({ reviewData, handleDelete }) => {
     const [service, setService] = useState({});
-    const { email, name, createdAt, review, userImg, serviceId } = reviewData;
+    const { _id, email, name, createdAt, review, userImg, serviceId } = reviewData;
 
     useEffect(() => {
         fetch(`http://localhost:5000/services/${serviceId}`)
@@ -11,7 +11,7 @@ const MyReviewRow = ({ reviewData }) => {
             .then(service => {
                 setService(service);
             })
-    }, [serviceId])
+    }, [serviceId, _id])
 
     return (
         <tr>
@@ -31,8 +31,8 @@ const MyReviewRow = ({ reviewData }) => {
             <td> {createdAt} </td>
             <td>
                 <div className="btn-group">
-                    <button className='btn btn-sm btn-info'>Edit</button>
-                    <button className='btn btn-sm btn-danger'>Delete</button>
+                    <Link to={`/review/edit/${_id}`} className='btn btn-sm btn-info text-white'>Edit</Link>
+                    <button className='btn btn-sm btn-danger' onClick={() => handleDelete(_id)}>Delete</button>
                 </div>
             </td>
         </tr>

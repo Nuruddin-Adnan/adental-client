@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { isEmpty } from '@firebase/util';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useRating from '../../../hooks/useRating';
@@ -21,6 +22,11 @@ const ServiceDetails = () => {
         event.preventDefault();
         const form = event.target;
         const reviewMessage = form.review.value;
+
+        if (isEmpty(reviewMessage.trim())) {
+            setError('Please write a review');
+            return;
+        }
 
         const data = {
             review: reviewMessage,
