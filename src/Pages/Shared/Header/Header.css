@@ -7,3 +7,9 @@
 .navbar .nav-link.active {
     color: rgb(34, 148, 193);
 }
+
+@media screen and (max-width: 575px) {
+    .navbar .navbar-brand {
+        max-width: 150px;
+    }
+}

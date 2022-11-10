@@ -11,7 +11,7 @@ const Banner = () => {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <div className="banner-item banner-item-1">
+                    <div className="banner-item banner-item-1" style={{ backgroundImage: "url('https://i.ibb.co/0DYn1c4/image1.jpg')" }}>
                         <div className="banner-content">
                             <h2>A PERFECT SMILE <br />
                                 GUARANTEED.</h2>
@@ -19,14 +19,14 @@ const Banner = () => {
                     </div>
                 </div>
                 <div className="carousel-item">
-                    <div className="banner-item banner-item-2">
+                    <div className="banner-item banner-item-2" style={{ backgroundImage: "url('https://i.ibb.co/bJ0V4s2/image3.jpg')" }}>
                         <div className="banner-content">
                             <h2>BE PROUD OF YOUR <br /> SMILE.</h2>
                         </div>
                     </div>
                 </div>
                 <div className="carousel-item">
-                    <div className="banner-item banner-item-3">
+                    <div className="banner-item banner-item-3" style={{ backgroundImage: "url('https://i.ibb.co/0DYn1c4/image3.jpg')" }}>
                         <div className="banner-content">
                             <h2>BEAUTIFUL NATURAL <br /> SMILES.</h2>
                         </div>

@@ -1,14 +1,12 @@
 /* banner start */
-.banner .banner-item-1 {
-    background: url('http://quickdevs.com/templates/dentalcare/img/images/image1.jpg') no-repeat center center/cover;
-}
 
-.banner .banner-item-2 {
-    background: url('http://quickdevs.com/templates/dentalcare/img/images/image2.jpg') no-repeat center center/cover;
-}
-
+.banner .banner-item-1,
+.banner .banner-item-2,
 .banner .banner-item-3 {
-    background: url('http://quickdevs.com/templates/dentalcare/img/images/image3.jpg') no-repeat center center/cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    ;
 }
 
 .banner .banner-content {

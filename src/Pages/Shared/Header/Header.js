@@ -2,12 +2,10 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 import './Header.css';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    const { setPreloader } = useContext(PreloaderContext);
 
     const handleLogOut = () => {
         logOut()
@@ -30,7 +28,7 @@ const Header = () => {
                     </ul>
                 </div>
                 :
-                <Link to='/login' onClick={() => setPreloader(true)} className="btn btn-lg btn-info text-white" type="button">Login</Link>
+                <Link to='/login' className="btn btn-lg btn-info text-white" type="button">Login</Link>
         }
 
 
@@ -42,7 +40,7 @@ const Header = () => {
                     <Link to='/' className="navbar-brand" href="#">
                         <img src={logo} alt="logo" className='img-fluid' />
                     </Link>
-                    <div className="d-lg-none d-block ms-auto">
+                    <div className="d-lg-none d-block ms-auto me-2">
                         {loginMenu}
                     </div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

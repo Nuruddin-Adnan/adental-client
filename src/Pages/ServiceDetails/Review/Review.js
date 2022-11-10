@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const Review = ({ reviewData }) => {
     const { name, createdAt, review, userImg } = reviewData;
@@ -10,7 +11,7 @@ const Review = ({ reviewData }) => {
             </div>
             <div className='flex-grow-0'>
                 <h6 className='mb-0'>{name}</h6>
-                <small className='text-muted mb-0'>{createdAt}</small>
+                <small className='text-muted mb-0'>{moment(createdAt).format('LLL')}</small>
                 <p>{review}</p>
                 <hr />
             </div>
