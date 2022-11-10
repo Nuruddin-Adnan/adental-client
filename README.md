@@ -1,6 +1,6 @@
-# Welcome to Alearn 
+# Welcome to ADENTAL 
 
-The best learning platform
+The best Dental service provider
 
 ## `Live Website`
 [https://adental-5382e.web.app](https://adental-5382e.web.app)
@@ -14,6 +14,7 @@ Adental is one of the best dental services in Bangladesh. Dental care or dentalc
 - [x] Firebase
 - [x] Node
 - [x] Express
+- [x] Vercel
 
 ### Features 
 
