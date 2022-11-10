@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
 import TitleBanner from '../../Shared/TitleBanner/TitleBanner';
 import MyReviewRow from '../MyReviewRow/MyReviewRow';
@@ -7,13 +7,25 @@ const Swal = require('sweetalert2')
 
 const MyReview = () => {
     useTitle('My Review');
+    const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
-    const reviewsLoaded = useLoaderData();
 
     useEffect(() => {
-        setReviews(reviewsLoaded)
-    }, [reviewsLoaded])
-
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('adental-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
+            .then(data => {
+                setReviews(data);
+            })
+    }, [user?.email, logOut])
 
     const handleDelete = id => {
 
@@ -40,7 +52,6 @@ const MyReview = () => {
             }
         })
     }
-
 
     return (
         <>

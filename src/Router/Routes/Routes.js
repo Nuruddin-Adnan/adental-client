@@ -12,6 +12,7 @@ import ServiceCreate from "../../Pages/Services/ServiceCreate"
 import Services from "../../Pages/Services/Services"
 import PrivateRoute from "../PrivateRoute/PrivateRoute"
 
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -45,9 +46,8 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
-                path: '/review/:email',
-                element: <PrivateRoute><MyReview></MyReview></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews?email=${params.email}`)
+                path: '/review',
+                element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
             },
             {
                 path: '/review/edit/:id',

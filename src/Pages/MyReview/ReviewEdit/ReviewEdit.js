@@ -7,7 +7,7 @@ import TitleBanner from '../../Shared/TitleBanner/TitleBanner';
 
 const ReviewEdit = () => {
     useTitle('Review Edit');
-    const { user, notify } = useContext(AuthContext);
+    const { notify } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [service, setService] = useState({});
@@ -49,7 +49,7 @@ const ReviewEdit = () => {
             .then(data => {
                 notify('Review Edit successfully');
                 setError('');
-                navigate(`/review/${user.email}`)
+                navigate(`/review`)
             })
             .catch(error => setError(error.message));
 

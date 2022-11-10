@@ -73,7 +73,7 @@ const ServiceDetails = () => {
 
     // show the review agianst a service
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?serviceId=${service._id}`)
+        fetch(`http://localhost:5000/serviceReview/${service._id}`)
             .then(res => res.json())
             .then(reviews => {
                 setReviews(reviews);

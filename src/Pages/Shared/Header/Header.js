@@ -25,8 +25,7 @@ const Header = () => {
                     </button>
 
                     <ul className="dropdown-menu dropdown-menu-end">
-                        <li><Link to='/profile' className="dropdown-item">Profile</Link></li>
-                        <li><Link to={`/review/${user.email}`} className="dropdown-item">My Review</Link></li>
+                        <li><Link to={`/review`} className="dropdown-item">My Review</Link></li>
                         <li><button onClick={handleLogOut} className="dropdown-item">Logout</button></li>
                     </ul>
                 </div>
@@ -63,7 +62,7 @@ const Header = () => {
                             {
                                 user?.uid && <>
                                     <li className="nav-item">
-                                        <NavLink to={`/review/${user.email}`} className='nav-link px-lg-3'>My Review</NavLink>
+                                        <NavLink to={`/review`} className='nav-link px-lg-3'>My Review</NavLink>
                                     </li>
                                     <li className="nav-item">
                                         <NavLink to='/servicesCreate' className='nav-link px-lg-3'>Add Service</NavLink>
