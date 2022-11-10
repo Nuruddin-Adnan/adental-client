@@ -51,13 +51,13 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink to='/home' onClick={() => setPreloader(true)} className='nav-link px-lg-3'>Home</NavLink>
+                                <NavLink to='/home' className='nav-link px-lg-3'>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/services' onClick={() => setPreloader(true)} className='nav-link px-lg-3'>Services</NavLink>
+                                <NavLink to='/services' className='nav-link px-lg-3'>Services</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/blog' onClick={() => setPreloader(true)} className='nav-link px-lg-3'>Blog</NavLink>
+                                <NavLink to='/blog' className='nav-link px-lg-3'>Blog</NavLink>
                             </li>
                             {
                                 user?.uid && <>

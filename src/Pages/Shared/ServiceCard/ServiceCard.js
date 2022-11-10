@@ -9,13 +9,14 @@ const ServiceCard = ({ service }) => {
     const { _id, title, img, description, price, ratings } = service;
     const { setPreloader } = useContext(PreloaderContext);
 
+
     return (
         <div className="col-lg-4 col-md-6">
             <div className="card border-0 service-card shadow">
                 <div className="card-body text-center">
                     <PhotoProvider>
                         <PhotoView src={img}>
-                            <img src={img} alt="service" className='w-100' style={{ cursor: 'pointer' }} />
+                            <img src={img} alt="service" className='w-100' style={{ cursor: 'pointer', maxHeight: '200px', objectFit: 'cover' }} />
                         </PhotoView>
                     </PhotoProvider>
                     <h4 className='fw-bold mt-3'>{title}</h4>

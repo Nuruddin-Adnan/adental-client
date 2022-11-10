@@ -14,7 +14,7 @@ const Registration = () => {
     const location = useLocation();
 
     // preloader false
-    useEffect(() => setPreloader(false));
+    useEffect(() => setPreloader(false), []);
 
     const from = location.state?.from?.pathname || '/';
 
@@ -54,6 +54,7 @@ const Registration = () => {
             return;
         }
 
+        setPreloader(true);
 
         createUser(email, password)
             .then((result) => {
@@ -61,16 +62,14 @@ const Registration = () => {
                     displayName: name,
                     photoURL: photoURL
                 })
-                    .then((test) => {
-
-                        console.log(test);
+                    .then(() => {
 
                         const currentUser = {
                             email: result.user.email
                         }
 
                         // get jwt token
-                        fetch('http://localhost:5000/jwt', {
+                        fetch('https://adental-server.vercel.app/jwt', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -82,6 +81,8 @@ const Registration = () => {
                                 console.log(data);
                                 // local storage is the easiest but not the best place to store jwt token
                                 localStorage.setItem('adental-token', data.token);
+
+                                setPreloader(false);
                                 form.reset();
                                 notify('Resistration Success!');
                                 navigate(from, { replace: true });

@@ -14,7 +14,7 @@ const Login = () => {
     const location = useLocation();
 
     // preloader false
-    useEffect(() => setPreloader(false));
+    useEffect(() => setPreloader(false), []);
 
     const from = location.state?.from?.pathname || '/';
 
@@ -22,13 +22,13 @@ const Login = () => {
         setError('')
         googleSignIn()
             .then((result) => {
-
+                setPreloader(true)
                 const currentUser = {
                     email: result.user.email
                 }
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://adental-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -41,7 +41,8 @@ const Login = () => {
                         // local storage is the easiest but not the best place to store jwt token
                         localStorage.setItem('adental-token', data.token);
 
-                        notify('Login Successfull')
+                        setPreloader(false)
+                        notify('Login Successfull');
                         navigate(from, { replace: true });
                     });
 
@@ -53,6 +54,7 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setError('');
+        setPreloader(true)
 
         const form = event.target;
         const email = form.email.value;
@@ -66,11 +68,8 @@ const Login = () => {
                     email: user.email
                 }
 
-                form.reset();
-                notify('Login Successfull');
-
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://adental-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -79,9 +78,12 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         // local storage is the easiest but not the best place to store jwt token
                         localStorage.setItem('adental-token', data.token);
+
+                        setPreloader(false);
+                        form.reset();
+                        notify('Login Successfull');
                         navigate(from, { replace: true });
                     });
             })

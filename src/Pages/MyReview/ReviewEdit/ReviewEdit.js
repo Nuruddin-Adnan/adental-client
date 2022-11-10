@@ -14,7 +14,7 @@ const ReviewEdit = () => {
     const review = useLoaderData();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${review.serviceId}`)
+        fetch(`https://adental-server.vercel.app/services/${review.serviceId}`)
             .then(res => res.json())
             .then(service => {
                 setService(service);
@@ -38,7 +38,7 @@ const ReviewEdit = () => {
         }
 
         // Edit a review by patch method
-        fetch(`http://localhost:5000/reviews/${review._id}`, {
+        fetch(`https://adental-server.vercel.app/reviews/${review._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

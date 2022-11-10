@@ -28,8 +28,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/services')
+                element: <Services></Services>
             },
             {
                 path: '/servicesCreate/',
@@ -38,12 +37,12 @@ export const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://adental-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/review/service/:id',
                 element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://adental-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/review',
@@ -52,7 +51,7 @@ export const router = createBrowserRouter([
             {
                 path: '/review/edit/:id',
                 element: <PrivateRoute><ReviewEdit></ReviewEdit></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://adental-server.vercel.app/reviews/${params.id}`)
             },
             {
                 path: '/blog',

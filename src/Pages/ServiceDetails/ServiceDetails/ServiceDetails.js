@@ -43,7 +43,7 @@ const ServiceDetails = () => {
         }
 
         // Post a review
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://adental-server.vercel.app/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services`)
+        fetch(`https://adental-server.vercel.app/services`)
             .then(res => res.json())
             .then(data => {
                 const services = data.filter(srv => srv._id !== _id);
@@ -73,7 +73,7 @@ const ServiceDetails = () => {
 
     // show the review agianst a service
     useEffect(() => {
-        fetch(`http://localhost:5000/serviceReview/${service._id}`)
+        fetch(`https://adental-server.vercel.app/serviceReview/${service._id}`)
             .then(res => res.json())
             .then(reviews => {
                 setReviews(reviews);

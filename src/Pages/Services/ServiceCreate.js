@@ -65,7 +65,7 @@ const ServiceCreate = () => {
         }
 
         // Create new serivce
-        fetch(`http://localhost:5000/services`, {
+        fetch(`https://adental-server.vercel.app/services`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

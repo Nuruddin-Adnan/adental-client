@@ -6,7 +6,7 @@ const MyReviewRow = ({ reviewData, handleDelete }) => {
     const { _id, email, name, createdAt, review, userImg, serviceId } = reviewData;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://adental-server.vercel.app/services/${serviceId}`)
             .then(res => res.json())
             .then(service => {
                 setService(service);

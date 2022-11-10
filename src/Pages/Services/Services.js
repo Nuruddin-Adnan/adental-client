@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import { PreloaderContext } from '../../contexts/PreloaderProvider/PreloaderProvider';
 import useTitle from '../../hooks/useTitle';
 import Partner from '../Shared/Partner/Partner';
@@ -8,12 +7,19 @@ import TitleBanner from '../Shared/TitleBanner/TitleBanner';
 
 const Services = () => {
     useTitle('Service');
+    const [services, setServices] = useState([]);
     const { setPreloader } = useContext(PreloaderContext);
 
-    // preloader false
-    useEffect(() => setPreloader(false));
+    useEffect(() => {
+        setPreloader(true)
+        fetch(`https://adental-server.vercel.app/services`)
+            .then(res => res.json())
+            .then(data => {
+                setServices(data);
+                setPreloader(false)
+            })
+    }, [])
 
-    const services = useLoaderData();
 
 
     return (
