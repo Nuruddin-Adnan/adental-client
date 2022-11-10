@@ -87,7 +87,10 @@ const Login = () => {
                         navigate(from, { replace: true });
                     });
             })
-            .catch(error => setError(error.message))
+            .catch(error => {
+                setPreloader(false)
+                setError(error.message)
+            })
     }
 
     return (

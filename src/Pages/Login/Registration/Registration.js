@@ -90,7 +90,10 @@ const Registration = () => {
                     })
                     .catch(error => setError(error.message))
             })
-            .catch(error => setError(error.message))
+            .catch(error => {
+                setPreloader(false)
+                setError(error.message)
+            })
     }
 
 

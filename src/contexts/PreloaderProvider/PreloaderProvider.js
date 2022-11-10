@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+import './PreloaderProvider.css'
 
 export const PreloaderContext = createContext()
 const PreloaderProvider = ({ children }) => {
@@ -13,10 +14,13 @@ const PreloaderProvider = ({ children }) => {
         <PreloaderContext.Provider value={value}>
             {
                 preloader &&
-                <div className='d-flex align-items-center justify-content-center fixed-top bg-info bg-opacity-75 text-white' style={{ height: '100vh' }}>
-                    <div className="spinner-border" style={{ width: '3rem', height: '3rem' }} role="status">
+                // <div className='d-flex align-items-center justify-content-center fixed-top bg-info bg-opacity-75 text-white' style={{ height: '100vh' }}>
+                //     <div className="spinner-border" style={{ width: '3rem', height: '3rem' }} role="status">
 
-                    </div>
+                //     </div>
+                // </div>
+                <div id="preloader-box">
+                    <div id="loader-spiner"></div>
                 </div>
             }
             {children}
