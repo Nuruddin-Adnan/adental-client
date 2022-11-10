@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { PreloaderContext } from '../../contexts/PreloaderProvider/PreloaderProvider';
 import useTitle from '../../hooks/useTitle';
 import Partner from '../Shared/Partner/Partner';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
@@ -7,7 +8,14 @@ import TitleBanner from '../Shared/TitleBanner/TitleBanner';
 
 const Services = () => {
     useTitle('Service');
+    const { setPreloader } = useContext(PreloaderContext);
+
+    // preloader false
+    useEffect(() => setPreloader(false));
+
     const services = useLoaderData();
+
+
     return (
         <>
 

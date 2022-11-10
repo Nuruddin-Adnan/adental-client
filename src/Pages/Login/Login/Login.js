@@ -1,15 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 import useTitle from '../../../hooks/useTitle';
 
 const Login = () => {
     useTitle('Login')
     const [error, setError] = useState('');
     const { googleSignIn, logIn, notify } = useContext(AuthContext);
+    const { setPreloader } = useContext(PreloaderContext);
     const navigate = useNavigate();
     const location = useLocation();
+
+    // preloader false
+    useEffect(() => setPreloader(false));
 
     const from = location.state?.from?.pathname || '/';
 
@@ -74,7 +79,7 @@ const Login = () => {
                                 <button onClick={handleGoogleSignIn} className='btn btn-lg btn-secondary w-100 d-flex align-items-center justify-content-center'>
                                     <span className='bg-white border rounded-circle d-flex align-items-center justify-content-center me-2' style={{ width: '40px', height: '40px' }}><FcGoogle className='fs-4'></FcGoogle></span> Sign In With Google
                                 </button>
-                                <p className='text-center mt-4'>Don't have an account? <Link className='fw-bold' to='/registration'><u>Register Now</u></Link></p>
+                                <p className='text-center mt-4'>Don't have an account? <Link onClick={() => setPreloader(true)} className='fw-bold' to='/registration'><u>Register Now</u></Link></p>
                             </div>
                         </div>
                     </div>

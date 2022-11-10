@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { PreloaderContext } from '../../contexts/PreloaderProvider/PreloaderProvider';
 import useTitle from '../../hooks/useTitle';
 import TitleBanner from '../Shared/TitleBanner/TitleBanner';
 
 const Blog = () => {
-    useTitle('Blog')
+    useTitle('Blog');
+    const { setPreloader } = useContext(PreloaderContext);
+
+    // preloader false
+    useEffect(() => setPreloader(false));
+
     return (
         <>
             <TitleBanner title={'Blog'}></TitleBanner>

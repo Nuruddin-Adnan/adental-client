@@ -6,15 +6,20 @@ import useRating from '../../../hooks/useRating';
 import useTitle from '../../../hooks/useTitle';
 import TitleBanner from '../../Shared/TitleBanner/TitleBanner';
 import Review from '../Review/Review';
+import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 
 const ServiceDetails = () => {
     useTitle('Service Details')
     const { user, notify } = useContext(AuthContext);
+    const { setPreloader } = useContext(PreloaderContext);
     const [services, setServices] = useState([]);
     const [reviews, setReviews] = useState([]);
     const [error, setError] = useState('');
     const service = useLoaderData();
     const { _id, title, img, description, price, ratings } = service;
+
+    // preloader false
+    useEffect(() => setPreloader(false));
 
     const handleSubmit = (event) => {
         setError('');
@@ -54,8 +59,6 @@ const ServiceDetails = () => {
                 setReviews(newReview);
             })
             .catch(error => setError(error.message));
-
-
     }
 
 

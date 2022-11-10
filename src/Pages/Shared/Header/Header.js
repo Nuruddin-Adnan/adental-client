@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 import './Header.css';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const { setPreloader } = useContext(PreloaderContext);
 
     const handleLogOut = () => {
         logOut()
@@ -29,7 +31,7 @@ const Header = () => {
                     </ul>
                 </div>
                 :
-                <Link to='/login' className="btn btn-lg btn-info text-white" type="button">Login</Link>
+                <Link to='/login' onClick={() => setPreloader(true)} className="btn btn-lg btn-info text-white" type="button">Login</Link>
         }
 
 
@@ -50,13 +52,13 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink to='/home' className='nav-link px-lg-3'>Home</NavLink>
+                                <NavLink to='/home' onClick={() => setPreloader(true)} className='nav-link px-lg-3'>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/services' className='nav-link px-lg-3'>Services</NavLink>
+                                <NavLink to='/services' onClick={() => setPreloader(true)} className='nav-link px-lg-3'>Services</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/blog' className='nav-link px-lg-3'>Blog</NavLink>
+                                <NavLink to='/blog' onClick={() => setPreloader(true)} className='nav-link px-lg-3'>Blog</NavLink>
                             </li>
                             {
                                 user?.uid && <>

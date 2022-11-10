@@ -1,16 +1,20 @@
 import { isEmpty } from '@firebase/util';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 import useTitle from '../../../hooks/useTitle';
 
 const Registration = () => {
     useTitle('Registration')
     const [error, setError] = useState('');
     const { createUser, updateUserProfile, notify } = useContext(AuthContext);
+    const { setPreloader } = useContext(PreloaderContext);
     const navigate = useNavigate();
     const location = useLocation();
 
+    // preloader false
+    useEffect(() => setPreloader(false));
 
     const from = location.state?.from?.pathname || '/';
 
@@ -104,7 +108,7 @@ const Registration = () => {
                                     <button className='btn btn-lg btn-info w-100 text-white'>Register</button>
                                 </form>
 
-                                <p className='text-center mt-4'>Already have an account? <Link className='fw-bold' to='/login'><u>Login Now</u></Link></p>
+                                <p className='text-center mt-4'>Already have an account? <Link onClick={() => setPreloader(true)} className='fw-bold' to='/login'><u>Login Now</u></Link></p>
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useRating from '../../../hooks/useRating';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 
 const ServiceCard = ({ service }) => {
     const { _id, title, img, description, price, ratings } = service;
+    const { setPreloader } = useContext(PreloaderContext);
 
     return (
         <div className="col-lg-4 col-md-6">
@@ -13,7 +15,7 @@ const ServiceCard = ({ service }) => {
                 <div className="card-body text-center">
                     <PhotoProvider>
                         <PhotoView src={img}>
-                            <img src={img} alt="service" className='w-100' />
+                            <img src={img} alt="service" className='w-100' style={{ cursor: 'pointer' }} />
                         </PhotoView>
                     </PhotoProvider>
                     <h4 className='fw-bold mt-3'>{title}</h4>
@@ -26,7 +28,7 @@ const ServiceCard = ({ service }) => {
                         {useRating(ratings)}
                     </div>
                 </div>
-                <Link to={`/services/${_id}`} className='btn btn-info text-white w-100 fs-5 py-3 rounded-0'>VIEW DETAILS</Link>
+                <Link onClick={() => setPreloader(true)} to={`/services/${_id}`} className='btn btn-info text-white w-100 fs-5 py-3 rounded-0'>VIEW DETAILS</Link>
             </div>
         </div>
     );
