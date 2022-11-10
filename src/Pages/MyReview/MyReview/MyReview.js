@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { PreloaderContext } from '../../../contexts/PreloaderProvider/PreloaderProvider';
 import useTitle from '../../../hooks/useTitle';
 import TitleBanner from '../../Shared/TitleBanner/TitleBanner';
 import MyReviewRow from '../MyReviewRow/MyReviewRow';
@@ -8,9 +9,11 @@ const Swal = require('sweetalert2')
 const MyReview = () => {
     useTitle('My Review');
     const { user, logOut } = useContext(AuthContext);
+    const { setPreloader } = useContext(PreloaderContext);
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
+        setPreloader(true);
         fetch(`https://adental-server.vercel.app/reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('adental-token')}`
@@ -24,6 +27,7 @@ const MyReview = () => {
             })
             .then(data => {
                 setReviews(data);
+                setPreloader(false)
             })
     }, [user?.email, logOut])
 
