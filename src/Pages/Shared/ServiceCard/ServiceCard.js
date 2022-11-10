@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import useRating from '../../../hooks/useRating';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ServiceCard = ({ service }) => {
     const { _id, title, img, description, price, ratings } = service;
@@ -10,7 +11,11 @@ const ServiceCard = ({ service }) => {
         <div className="col-lg-4 col-md-6">
             <div className="card border-0 service-card shadow">
                 <div className="card-body text-center">
-                    <img src={img} alt="service" className='w-100' />
+                    <PhotoProvider>
+                        <PhotoView src={img}>
+                            <img src={img} alt="service" className='w-100' />
+                        </PhotoView>
+                    </PhotoProvider>
                     <h4 className='fw-bold mt-3'>{title}</h4>
                     <p className='text-muted lead'>
                         {description.text.substring(0, 100)}

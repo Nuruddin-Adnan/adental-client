@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
 
     //  toast notification message
     const notify = (message) => toast.success(message, {
-        position: "top-center",
+        position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,

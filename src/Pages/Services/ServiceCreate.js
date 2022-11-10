@@ -64,7 +64,7 @@ const ServiceCreate = () => {
             createdAt: new Date()
         }
 
-        // Post a review
+        // Create new serivce
         fetch(`http://localhost:5000/services`, {
             method: 'POST',
             headers: {
@@ -79,7 +79,6 @@ const ServiceCreate = () => {
                 setError('');
             })
             .catch(error => setError(error.message));
-
 
     }
 
