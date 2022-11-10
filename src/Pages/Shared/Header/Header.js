@@ -64,7 +64,7 @@ const Header = () => {
                                         <NavLink to={`/review/${user.email}`} className='nav-link px-lg-3'>My Review</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                        <NavLink to='/addService' className='nav-link px-lg-3'>Add Service</NavLink>
+                                        <NavLink to='/servicesCreate' className='nav-link px-lg-3'>Add Service</NavLink>
                                     </li>
                                 </>
                             }

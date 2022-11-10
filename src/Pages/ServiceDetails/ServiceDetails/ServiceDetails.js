@@ -99,7 +99,10 @@ const ServiceDetails = () => {
                                     <p className='lead mt-4'>{description.text}</p>
 
                                     <ul>
-                                        {description.list.map((listItem, index) => <li className='fs-5' key={index}>{listItem}</li>)}
+                                        {
+                                            description?.list &&
+                                            description?.list.map((listItem, index) => <li className='fs-5' key={index}>{listItem}</li>)
+                                        }
                                     </ul>
                                     <hr />
                                     {
